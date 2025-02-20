@@ -1,0 +1,38 @@
+meeting_minutes_summary_task:
+  description: >
+    Create three separate outputs from the following transcript:
+    {transcript}
+
+    1. Write a comprehensive meeting summary to summary.txt that includes:
+       - Key financial metrics
+       - Important business updates
+       - Future plans and projections
+    
+    2. Extract and write action items to action_items.txt in this format:
+       - Action item 1
+       - Action item 2
+       - ...
+
+    3. Write a sentiment analysis to sentiment.txt that evaluates the overall tone and confidence of the meeting.
+
+    Use the provided FileWriterTool for each file. Each write operation should be done separately and in the directory meeting_minutes.
+
+  expected_output: >
+    Confirmation that all three files have been written successfully.
+  agent: meeting_minutes_summarizer
+
+
+
+meeting_minutes_writing_task:
+  description: >
+    Write the meeting minutes based on the summary, action items and sentiment.  This should give everything needed to know based on summary and action items.
+    Put them into a nice markdown document.
+
+    - Use Todays Date for the meeting date
+    - Use the company name RayAI for the company name
+    - User Tyler for the name of the organizer
+    - Create a list of attendees from the transcript (make up some if needed)
+    - The location was on Zoom
+  expected_output: >
+    A meeting minutes document
+  agent: meeting_minutes_writer
