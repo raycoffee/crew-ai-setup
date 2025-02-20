@@ -3,6 +3,7 @@ from typing import Type
 from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 from .gmail_utility import authenticate_gmail, create_message, create_draft
+from agentops import record_tool
 
 
 class GmailToolInput(BaseModel):
@@ -10,7 +11,7 @@ class GmailToolInput(BaseModel):
 
     body: str = Field(..., description="The body of the email to send.")
 
-
+@record_tool("GmailTool")
 class GmailTool(BaseTool):
     name: str = "Gmail Tool"
     description: str = (

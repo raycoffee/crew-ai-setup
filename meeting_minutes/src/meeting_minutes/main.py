@@ -4,6 +4,8 @@ from crewai.flow import Flow, listen, start
 from faster_whisper import WhisperModel
 from crews.meeting_minutes_crew.meeting_minutes_crew import MeetingMinutesCrew
 from crews.gmailcrew.gmailcrew import GmailCrew
+import os
+import agentops
 from pathlib import Path
 
 
@@ -54,6 +56,7 @@ class MeetingMinutesFlow(Flow[MeetingMinutesState]):
 
 
 def kickoff():
+    session = agentops.init(api_key=os.getenv("AGENTOPS_API_KEY"))
     meeting_minutes_flow = MeetingMinutesFlow()
     meeting_minutes_flow.plot()
     meeting_minutes_flow.kickoff()
