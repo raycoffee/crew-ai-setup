@@ -43,6 +43,8 @@ def run():
             inputs['date'] = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
             AiNews().crew().kickoff(inputs=inputs)
+
+            
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
