@@ -2,3 +2,7 @@
 __pycache__/
 lib/
 .DS_Store
+
+# Google OAuth credentials
+**/credentials.json
+**/token.json
